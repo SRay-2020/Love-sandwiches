@@ -66,6 +66,17 @@ def update_sales_worksheet(data):
     sales_worksheet.append_row(data)
     print("Sales worksheet updated sucessfully.\n")
 
+
+def update_surplus_worksheet(surplus_data):
+    """
+    Update surplus worksheet, add new row with the data list provided.
+
+    """
+    print("Updating surplus worksheet...\n")
+    surplus_worksheet = SHEET.worksheet("surplus")
+    surplus_worksheet.append_row(surplus_data)
+    print("Surplus worksheet updated sucessfully.\n")
+
 def calculate_surplus_data(sales_row):
     """
     Compare sales with stock and calculate surplus.
@@ -85,9 +96,6 @@ def calculate_surplus_data(sales_row):
     
     return surplus_data
 
-
-
-
 def main():
     """
     Run all program functions
@@ -96,7 +104,8 @@ def main():
     sales_data = [int(num) for num in data]
     update_sales_worksheet(sales_data)
     new_surplus_data = calculate_surplus_data(sales_data)
-    print(new_surplus_data)
+    update_surplus_worksheet(new_surplus_data)
+    
 
 
 print("Welcome to Love Sambos Data Automation\n")
