@@ -136,6 +136,23 @@ def main():
 
 
 print("Welcome to Love Sambos Data Automation\n")
-main()
+stock_data = main()
+
+
+# Python Challenge code below this comment
+def get_stock_values(data):
+    """
+    Return the current stock values and match them to the corresponding 
+    heading titles row of worksheet.
+    """
+    print("Calculating stock values...\n")
+
+    headings = SHEET.worksheet("sales").get_all_values()[0]
+    headings_dict = {headings[i] : data [i] for i in range(len(headings))}
+    return headings_dict
+
+    
+stock_values = get_stock_values(stock_data)
+print(stock_values)
 
 
